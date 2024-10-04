@@ -2,13 +2,13 @@ package lucavig;
 
 import lucavig.raccolta.Generi;
 
-public class Videogiochi extends Games{
+public class Videogiochi extends Gioco{
 
     private String piattaforma;
     private int durataDiGioco;
     private Generi genere;
 
-    public Videogiochi(int idGioco, String titolo, int annoPubblicazione, int prezzo, String piattaforma, int durataDiGioco, Generi genere) {
+    public Videogiochi(int idGioco, String titolo, int annoPubblicazione, double prezzo, String piattaforma, int durataDiGioco, Generi genere) {
         super(idGioco, titolo, annoPubblicazione, prezzo);
         this.piattaforma = piattaforma;
         this.durataDiGioco = durataDiGioco;

@@ -1,12 +1,12 @@
 package lucavig;
 
-public class GiocoDaTavolo extends Games {
+public class GiocoDaTavolo extends Gioco {
 
     private int numeroDiGiocatori;
     private int durataMediaPartita;
 
 
-    public GiocoDaTavolo(int idGioco, String titolo, int annoPubblicazione, int prezzo, int numeroDiGiocatori, int durataMediaPartita) {
+    public GiocoDaTavolo(int idGioco, String titolo, int annoPubblicazione, double prezzo, int numeroDiGiocatori, int durataMediaPartita) {
         super(idGioco, titolo, annoPubblicazione, prezzo);
         this.numeroDiGiocatori= numeroDiGiocatori;
         this.durataMediaPartita = durataMediaPartita;

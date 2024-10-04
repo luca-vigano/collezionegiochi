@@ -1,13 +1,13 @@
 package lucavig;
 
-public abstract class Games {
+public abstract class Gioco {
 
     int idGioco;
     String titolo;
     int annoPubblicazione;
-    int prezzo;
+    double prezzo;
 
-    public Games(int idGioco, String titolo, int annoPubblicazione, int prezzo) {
+    public Gioco(int idGioco, String titolo, int annoPubblicazione, double prezzo) {
         this.idGioco = idGioco;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
@@ -16,7 +16,7 @@ public abstract class Games {
 
     @Override
     public String toString() {
-        return "Games{" +
+        return "Gioco{" +
                 "idGioco=" + idGioco +
                 ", titolo='" + titolo + '\'' +
                 ", annoPubblicazione=" + annoPubblicazione +
@@ -48,11 +48,11 @@ public abstract class Games {
         this.annoPubblicazione = annoPubblicazione;
     }
 
-    public int getPrezzo() {
+    public double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(int prezzo) {
+    public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
 }
