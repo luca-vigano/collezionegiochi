@@ -98,8 +98,8 @@ public class Application {
 
                 case 7:
                     System.out.print("Inserisci ID del gioco da aggiornare: ");
-                    int idAggiornamento = Integer.parseInt(scanner.nextLine());
-                    Optional<Gioco> giocoDaAggiornare = collezione.cercaId(idAggiornamento);
+                    int idDaAggiornare = Integer.parseInt(scanner.nextLine());
+                    Optional<Gioco> giocoDaAggiornare = collezione.cercaId(idDaAggiornare);
                         if (giocoDaAggiornare.isPresent()){
                             Gioco gioco1 = giocoDaAggiornare.get();
 
@@ -117,9 +117,9 @@ public class Application {
                         System.out.print("Nuovo Genere: ");
                         String nuovoGenere = scanner.next().toUpperCase();
 
-                        Videogiochi nuovoVideogioco = new Videogiochi(idAggiornamento, nuovoTitolo, nuovoAnno, nuovoPrezzo, nuovaPiattaforma, nuovaDurata, Generi.valueOf(nuovoGenere));
+                        Videogiochi nuovoVideogioco = new Videogiochi(idDaAggiornare, nuovoTitolo, nuovoAnno, nuovoPrezzo, nuovaPiattaforma, nuovaDurata, Generi.valueOf(nuovoGenere));
 
-                        collezione.aggiornaGioco(idAggiornamento, nuovoVideogioco);
+                        collezione.aggiornaGioco(idDaAggiornare, nuovoVideogioco);
 
 
 
@@ -135,16 +135,21 @@ public class Application {
                         System.out.print("Nuova Durata media (minuti): ");
                         int nuovaDurataMinuti = scanner.nextInt();
 
-                        GiocoDaTavolo nuovoGiocoDaTavolo = new GiocoDaTavolo(idAggiornamento, nuovoTitoloGiocoDaTavolo,nuovoAnno, nuovoPrezzoGiocoDaTavolo, nuovoNumGiocatori, nuovaDurataMinuti);
-                        collezione.aggiornaGioco(idAggiornamento, nuovoGiocoDaTavolo);
+                        GiocoDaTavolo nuovoGiocoDaTavolo = new GiocoDaTavolo(idDaAggiornare, nuovoTitoloGiocoDaTavolo,nuovoAnno, nuovoPrezzoGiocoDaTavolo, nuovoNumGiocatori, nuovaDurataMinuti);
+                        collezione.aggiornaGioco(idDaAggiornare, nuovoGiocoDaTavolo);
                     }
                         }
                     break;
 
-
+                case 8:
+                    collezione.statistiche();
 
                 case 9:
                     acceso=false;
+                    scanner.close();
+
+                default:
+                    System.out.println("Comando non valido! riprova");
             }
         }
 
