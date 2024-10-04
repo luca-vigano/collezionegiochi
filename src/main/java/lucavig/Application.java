@@ -96,6 +96,52 @@ public class Application {
                     collezione.rimuoviGioco(idRicerca2);
                     break;
 
+                case 7:
+                    System.out.print("Inserisci ID del gioco da aggiornare: ");
+                    int idAggiornamento = Integer.parseInt(scanner.nextLine());
+                    Optional<Gioco> giocoDaAggiornare = collezione.cercaId(idAggiornamento);
+                        if (giocoDaAggiornare.isPresent()){
+                            Gioco gioco1 = giocoDaAggiornare.get();
+
+                    if (gioco1 instanceof Videogiochi) {
+                        System.out.print("Nuovo Titolo: ");
+                        String nuovoTitolo = scanner.nextLine();
+                        System.out.print("Nuovo Anno di pubblicazione: ");
+                        int nuovoAnno = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nuovo Prezzo: ");
+                        double nuovoPrezzo = scanner.nextDouble();
+                        System.out.print("Nuova Piattaforma: ");
+                        String nuovaPiattaforma = scanner.next();
+                        System.out.print("Nuova Durata (ore): ");
+                        int nuovaDurata = scanner.nextInt();
+                        System.out.print("Nuovo Genere: ");
+                        String nuovoGenere = scanner.next().toUpperCase();
+
+                        Videogiochi nuovoVideogioco = new Videogiochi(idAggiornamento, nuovoTitolo, nuovoAnno, nuovoPrezzo, nuovaPiattaforma, nuovaDurata, Generi.valueOf(nuovoGenere));
+
+                        collezione.aggiornaGioco(idAggiornamento, nuovoVideogioco);
+
+
+
+                    } else if (gioco1 instanceof GiocoDaTavolo) {
+                        System.out.print("Nuovo Titolo: ");
+                        String nuovoTitoloGiocoDaTavolo = scanner.nextLine();
+                        System.out.print("Nuovo Prezzo: ");
+                        double nuovoPrezzoGiocoDaTavolo = scanner.nextDouble();
+                        System.out.print("Anno di pubblicazione: ");
+                        int nuovoAnno = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nuovo Numero di Giocatori: ");
+                        int nuovoNumGiocatori = scanner.nextInt();
+                        System.out.print("Nuova Durata media (minuti): ");
+                        int nuovaDurataMinuti = scanner.nextInt();
+
+                        GiocoDaTavolo nuovoGiocoDaTavolo = new GiocoDaTavolo(idAggiornamento, nuovoTitoloGiocoDaTavolo,nuovoAnno, nuovoPrezzoGiocoDaTavolo, nuovoNumGiocatori, nuovaDurataMinuti);
+                        collezione.aggiornaGioco(idAggiornamento, nuovoGiocoDaTavolo);
+                    }
+                        }
+                    break;
+
+
 
                 case 9:
                     acceso=false;

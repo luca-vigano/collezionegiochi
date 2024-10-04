@@ -36,8 +36,16 @@ public class Collezione {
     }
 
     public void rimuoviGioco (int id){
-        giochi.remove(giochi.stream().filter(gioco -> gioco.getIdGioco() == id));
+        Optional<Gioco> giocoDaCancellare = cercaId(id);
+        giochi.remove(giocoDaCancellare);
         System.out.println("gioco con id: " + id + "rimosso correttamente");
     }
+
+    public void aggiornaGioco(int id, Gioco nuovoGioco) {
+        Optional<Gioco> giocoEsistente = cercaId(id);
+        giochi.remove(giocoEsistente);
+        giochi.add(nuovoGioco);
+        System.out.println("Gioco aggiornato con successo.");
+
 
 }
