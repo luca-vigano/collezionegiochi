@@ -143,10 +143,12 @@ public class Application {
 
                 case 8:
                     collezione.statistiche();
+                    break;
 
                 case 9:
                     acceso=false;
                     scanner.close();
+                    break;
 
                 default:
                     System.out.println("Comando non valido! riprova");
