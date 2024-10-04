@@ -20,4 +20,13 @@ public class Collezione {
     public Optional<Gioco> cercaId (int id){
         return giochi.stream().filter(gioco -> gioco.getIdGioco() == id).findFirst();
     }
+
+    public List<Gioco> cercaPerPrezzo(double prezzo) {
+        return giochi.stream()
+                .filter(g -> g.getPrezzo() < prezzo).toList();
+
+    }
+
+
+
 }

@@ -2,6 +2,7 @@ package lucavig;
 
 import lucavig.raccolta.Generi;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -73,6 +74,13 @@ public class Application {
                     int idRicerca = Integer.parseInt(scanner.nextLine());
                     Optional<Gioco> gioco = collezione.cercaId(idRicerca); // capire optional suggerito dall'ide
                     System.out.println(gioco);
+                    break;
+
+                case 4:
+                    System.out.print("Inserisci prezzo massimo: ");
+                    double prezzoMax = Double.parseDouble(scanner.nextLine());
+                    List<Gioco> giochiPerPrezzo = collezione.cercaPerPrezzo(prezzoMax);
+                    giochiPerPrezzo.forEach(g -> System.out.println(g));
                     break;
 
                 case 9:
