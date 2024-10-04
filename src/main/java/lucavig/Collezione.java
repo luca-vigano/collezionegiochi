@@ -1,8 +1,6 @@
 package lucavig;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Collezione {
 
@@ -45,7 +43,20 @@ public class Collezione {
         Optional<Gioco> giocoEsistente = cercaId(id);
         giochi.remove(giocoEsistente);
         giochi.add(nuovoGioco);
-        System.out.println("Gioco aggiornato con successo.");
+        System.out.println("Gioco aggiornato con successo." + nuovoGioco);
+    }
+
+    public void statistiche(){
+        int numeroVideogiochi = (int) giochi.stream().filter(gioco -> gioco instanceof Videogiochi).count();
+        int numeroGiochiTavolo = (int) giochi.stream().filter(gioco -> gioco instanceof GiocoDaTavolo).count();
+       Optional<Gioco> giocoPiuCostoso = giochi.stream().sorted(Comparator.comparingDouble(Gioco::getPrezzo).reversed()).findFirst();
+        OptionalDouble prezzoMedio = giochi.stream().mapToDouble(gioco -> gioco.getPrezzo()).average();
+        System.out.println("STATISTICHE DELLA COLLEZIONE: ");
+        System.out.println("NUMERO VIDEOGIOCHI: "  + numeroVideogiochi);
+        System.out.println("NUMERO GIOCHI DA TAVOLO: "  + numeroGiochiTavolo);
+        System.out.println("GIOCO PIU' COSTOSO: "  + giocoPiuCostoso);
+        System.out.println("PREZZO MEDIO: "  + prezzoMedio);
+    }
 
 
 }
