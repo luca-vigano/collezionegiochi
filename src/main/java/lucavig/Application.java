@@ -2,6 +2,7 @@ package lucavig;
 
 import lucavig.raccolta.Generi;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Application {
@@ -9,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        Collezione collezione = new Collezione();
 
         boolean acceso = true;
 
@@ -36,15 +38,45 @@ public class Application {
                     System.out.print("Anno di pubblicazione: ");
                     int annoVideogioco = Integer.parseInt(scanner.nextLine());
                     System.out.print("Prezzo: ");
-                    Double prezzoVideogioco= Double.parseDouble(scanner.nextLine());
+                    double prezzoVideogioco= Double.parseDouble(scanner.nextLine());
                     System.out.print("Piattaforma: ");
                     String piattaforma = scanner.nextLine();
                     System.out.print("Durata gioco in ore: ");
                     int durataVideogioco = Integer.parseInt(scanner.nextLine());
                     System.out.print("Genere (scegli tra: AZIONE, AVVENTURA, SPARATUTTO, STRATEGIA, SPORTIVO, SIMULAZIONE, HORROR, CORSE, SURVIVAL ");
-                    String genereVideogioco= scanner.nextLine();
+                    String genereVideogioco= scanner.nextLine().toUpperCase();
 
-                    new Videogiochi(idVideogioco,titoloVideogioco,annoVideogioco,prezzoVideogioco,piattaforma, durataVideogioco, Generi.valueOf(genereVideogioco));
+                    collezione.aggiungiGioco(new Videogiochi(idVideogioco,titoloVideogioco,annoVideogioco,prezzoVideogioco,piattaforma, durataVideogioco, Generi.valueOf(genereVideogioco)));
+                    break;
+
+                case 2:
+                    System.out.print("ID: ");
+                    int idGiocoDaTavolo= Integer.parseInt(scanner.nextLine());
+                    System.out.print("Titolo: ");
+                    String titoloGiocoDaTavolo = scanner.nextLine();
+                    System.out.print("Anno di pubblicazione: ");
+                    int annoGiocoDaTavolo = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Prezzo: ");
+                    double prezzoGiocoDaTavolo = Double.parseDouble(scanner.nextLine());
+                    System.out.print("Numero di giocatori: ");
+                    int numGiocatori = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Durata media (minuti): ");
+                    int durataGiocoDaTavolo = Integer.parseInt(scanner.nextLine());
+
+                    collezione.aggiungiGioco(new GiocoDaTavolo(
+                            idGiocoDaTavolo, titoloGiocoDaTavolo, annoGiocoDaTavolo, prezzoGiocoDaTavolo,
+                            numGiocatori, durataGiocoDaTavolo));
+                    break;
+
+                case 3:
+                    System.out.print("Inserisci ID da cercare: ");
+                    int idRicerca = Integer.parseInt(scanner.nextLine());
+                    Optional<Gioco> gioco = collezione.cercaId(idRicerca); // capire optional suggerito dall'ide
+                    System.out.println(gioco);
+                    break;
+
+                case 9:
+                    acceso=false;
             }
         }
 
