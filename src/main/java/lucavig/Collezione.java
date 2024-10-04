@@ -28,5 +28,16 @@ public class Collezione {
     }
 
 
+    public List<GiocoDaTavolo> cercaPerNumeroGiocatori(int giocatori){
+        return giochi.stream()
+                .filter(g -> g instanceof GiocoDaTavolo)
+                .map(g -> (GiocoDaTavolo) g)
+                .filter(g -> g.getNumeroDiGiocatori() == giocatori).toList();
+    }
+
+    public void rimuoviGioco (int id){
+        giochi.remove(giochi.stream().filter(gioco -> gioco.getIdGioco() == id));
+        System.out.println("gioco con id: " + id + "rimosso correttamente");
+    }
 
 }

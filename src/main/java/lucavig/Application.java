@@ -83,6 +83,20 @@ public class Application {
                     giochiPerPrezzo.forEach(g -> System.out.println(g));
                     break;
 
+                case 5:
+                    System.out.print("Inserisci numero di giocatori: ");
+                    int numGiocatoriRicerca = Integer.parseInt(scanner.nextLine());
+                    List<GiocoDaTavolo> giochiPerNumGiocatori = collezione.cercaPerNumeroGiocatori(numGiocatoriRicerca);
+                    giochiPerNumGiocatori.forEach(g -> System.out.println(g));
+                    break;
+
+                case 6:
+                    System.out.print("Inserisci ID gioco da eliminare: ");
+                    int idRicerca2 = Integer.parseInt(scanner.nextLine());
+                    collezione.rimuoviGioco(idRicerca2);
+                    break;
+
+
                 case 9:
                     acceso=false;
             }
